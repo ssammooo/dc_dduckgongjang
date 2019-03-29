@@ -3,8 +3,6 @@ from urllib.request import urlopen
 import os
 import time
 import random
-from selenium import webdriver
-from datetime import datetime
 
 def img_down(m, postnum, title, idx, keyword) :
     href = m.a.get("href")
@@ -183,7 +181,6 @@ def area3(title, m, postnum, idx) :
     else:
         pass
 
-
 # 에이프릴, hot, 국카스텐, 포레스텔라, 남태현, 박우진, 정채연, 위너, 최민기
 # 안형섭, 휘성, 마마무, 임영민, 우주소녀, 에버글로우, 체리블렛, itzy
 def area4(title, m, postnum, idx) :
@@ -344,9 +341,15 @@ if __name__=="__main__":
     print("************** 떡 모 으 미 **************")
     print("**********저장경로=실행파일경로**********")
     print("**************자짤 구별못함**************")
+
+    #gid = input("갤러리 id (기본값 : noraeinjeung, 기본값시 그냥 엔터) : ")
+    gid = ""
     area = input("구역(1,2,3,4,5,6) : ")
-    page = int(input("마지막페이지 : "))
+    page = int(input("마지막페이지(해당구역탭의 마지막페이지) : "))
     area = area + '0'
 
+    if gid == "" :
+        gid = 'noraeinjeung'
+
     for i in range(page, 0, -1) :
-        crawling('noraeinjeung', str(i), area)
+        crawling(gid, str(i), area)
